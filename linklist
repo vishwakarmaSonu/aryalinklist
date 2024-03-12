@@ -104,9 +104,50 @@ node* fu2(node*head,int po){
 	return temp;
 }
 
+
+node*rev(node*&head){
+	if(head==NULL || head->next==NULL){
+		return head;
+	}
+
+	node*pr = NULL;
+	node*cur = head;
+	node*forw = NULL;
+
+	while(cur!=NULL){
+		forw =cur->next;
+		cur->next = pr;
+		pr =cur;
+		cur=forw;
+	}
+	return pr;
+
+}
+
+node*unsor(node*&head){
+
+	if(head==NULL){
+		return NULL;
+	}
+
+	node*cur = head;
+
+	while(cur!=NULL){
+		if((cur->next!=NULL) && (cur->data==cur->next->data)){
+			node*k = cur->next->next;
+			node*nodelete = cur->next;
+			delete(nodelete);
+			cur->next = k;
+		}
+		else{
+			cur=cur->next;
+		}
+	}
+	return head;
+}
 int main(){
 
-	node*h= new node(10);
+	node*h= new node(500);
 	node*h1= new node(20);
 	node*h2 = new node(30);
 	h->next = h1;
@@ -117,7 +158,7 @@ int main(){
 	ins(h, d);
 	print(h);
 	cout<<endl;
-	int d1 =550;
+	int d1 =500;
 	las(h,d1);
 	print(h);
 	cout<<endl;
@@ -132,7 +173,13 @@ int main(){
 	int k = fu2(h,2)->data;
 	deleteNode(h,k);
 	print(h);
-
+	cout<<endl;
+	h = rev(h);
+	print(h);
+cout<<endl;
+cout<<"sorted node";
+h = unsor(h);
+print(h);
 
 
 
@@ -140,3 +187,4 @@ int main(){
 
 
 return 0;}
+
