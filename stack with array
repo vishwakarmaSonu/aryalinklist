@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+class stacks{
+	int *data;
+	int nextindex;
+	int capacity;
+
+public:
+	stacks(int sizee){
+		data = new int[sizee];
+		nextindex =0;
+		capacity= sizee;
+	}
+
+	int sizes(){
+	return nextindex;
+	}
+
+	bool isempty(){
+		if(nextindex ==0){
+			return true;
+		}
+		else{
+			return false;
+		}
+		return nextindex ==0;
+	}
+
+	void pushs(int element){
+
+		if(nextindex == capacity){
+			cout<<"stack full";
+			return ;
+		}
+		data[nextindex] = element;
+		nextindex++;
+	}
+	int pop(){
+		if(isempty()){
+			cout<<"stack is empty"<<endl;
+			return -1;
+		}
+		nextindex--;
+		return data[nextindex];
+	}
+
+	int tops(){
+		return data[nextindex-1];
+	}
+
+};
+int main(){
+
+	stacks s1(4);
+	s1.pushs(9);
+	s1.pushs(4);
+	s1.pushs(7);
+	s1.pushs(5);
+	s1.pushs(2);
+	cout<<s1.tops();
+
+
+
+
+
+
+return 0; }
