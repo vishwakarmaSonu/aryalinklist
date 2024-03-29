@@ -1,0 +1,82 @@
+#include<bits/stdc++.h>
+using namespace std;
+class node{
+
+public:
+		int data;
+	node*next;
+	node(int data){
+	this->data = data;
+	next = NULL;}
+};
+
+class stacks{
+
+
+public:
+	node*head;
+	int sizes;
+
+	stacks(){
+		head=NULL;
+		sizes =0;
+	}
+	int getsizes(){
+	return sizes;
+	}
+
+	int isempty(){
+	if(sizes==0){
+		return 1;
+	}
+	else{
+		return 0;
+	}
+	}
+
+	void pus(int data){
+		node*da = new node(data);
+		da->next = head;
+		head = da;
+		sizes++;
+	}
+	int pops(){
+		if(isempty()){
+			return 0;
+		}
+		int ans = head->data;
+		node*temp = head;
+		head = head->next;
+		delete temp;
+		sizes--;
+		return ans;
+	}
+	int tops(){
+		if(isempty()){
+			return 0;
+		}
+		return head->data;
+	}
+};
+
+int main(){
+
+	stacks  s1;
+	s1.pus(43);
+		s1.pus(43);
+
+			s1.pus(41);
+
+		cout<<s1.getsizes();
+		cout<<s1.tops();
+		cout<<s1.pops();
+				cout<<s1.tops();
+						cout<<s1.getsizes();
+
+
+
+
+
+
+
+return 0;}
