@@ -1,0 +1,55 @@
+// reverse the string 
+string s ="sonu";
+	stack<char>st;
+	for(int i =0;i<s.size();i++){
+		st.push(s[i]);
+	}
+
+	string ss ="";
+	while(!st.empty()){
+		char ch = st.top();
+		ss.push_back(ch);
+		st.pop();
+	}
+	cout<<ss;
+
+  tc = o(n}
+  sc = o(n)
+
+
+  /// rever stack by recursion
+
+  
+void insertatbottom(stack<int> &s, int x){
+    if(s.empty()){
+        s.push(x);
+        return ;
+    }
+
+    int ss = s.top();
+    s.pop();
+
+    //rec
+    insertatbottom(s, x);
+
+    s.push(ss);
+}
+
+void reverseStack(stack<int> &stack) {
+    // Write your code here
+
+    // base case 
+    if(stack.empty()){
+        return ;
+    }
+
+    int num = stack.top();
+    stack.pop();
+
+    //recuse
+    reverseStack(stack);
+
+    insertatbottom(stack, num);
+
+}
+  
